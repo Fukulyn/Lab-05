@@ -67,4 +67,4 @@
 - 資料應該直接依賴主鍵，不能間接依賴主鍵
 ## ER-D圖
 
-![Lab05_01](https://github.com/Fukulyn/Lab-05/blob/main/Lab-05_1/Lab05_01.png)
+![Lab05_01](https://github.com/Fukulyn/Lab-05/blob/main/Lab05_1/Lab05_01.png)
