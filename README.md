@@ -64,3 +64,5 @@
 - 移除傳遞依賴：如出版社地址沒有放在 `Book` 表裡面
 
 ## ER-D圖
+
+![Lab05_01](https://github.com/Fukulyn/Lab-05/blob/main/Lab-05_1/Lab05_01.png)
