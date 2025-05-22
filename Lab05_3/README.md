@@ -32,6 +32,7 @@
 - `Enrollment` 表主鍵為 (`StudentID`, `CourseID`, `Semester`, `InstructorID`)
 - 所有函數相依的左側為候選鍵 → 不需再進一步拆解
 
+
 ### 碰到的挑戰
 #### 1. 複合主鍵過長（實作複雜）
 -  若 `Enrollment` 表為符合 BCNF，主鍵需為 `(StudentID, CourseCode, Semester, InstructorID)`
