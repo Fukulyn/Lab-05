@@ -31,7 +31,7 @@
 ## 如果要達成BCNF?
 - `Enrollment` 表主鍵為 (`StudentID`, `CourseID`, `Semester`, `InstructorID`)
 - 所有函數相依的左側為候選鍵 → 不需再進一步拆解
-- 
+
 ### 碰到的挑戰
 #### 1. 複合主鍵過長（實作複雜）
 -  若 `Enrollment` 表為符合 BCNF，主鍵需為 `(StudentID, CourseCode, Semester, InstructorID)`
@@ -90,7 +90,7 @@
 
 ## ER圖
 
-![Lab05_03]()
+![Lab05_03](https://github.com/Fukulyn/Lab-05/blob/main/Lab05_3/Lab05_03.png)
 
 
 
