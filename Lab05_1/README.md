@@ -20,36 +20,20 @@
 
 ### 函數相依性列表：
 
-#### 書籍(Book)
-
-- ISBN → 書名、出版年份、書籍類別、出版社名稱
-
-- ISBN → 作者
-
-- 出版社名稱 → 出版社地址
-
+#### 書籍 (Book)
+- `Book` → (ISBN, Title, Year, Category, PublisherName)
+#### 書籍作者 (BookAuthor)
+- `BookAuthor` → (ISBN, AuthorID)   -- 多對多關係
+#### 出版社 (Publisher)
+`Publisher` → (PublisherName, PublisherAddress)
+#### 作者 (Author)
+- `Author` → (AuthorID, AuthorName)
 #### 會員(Member)
-
-- 會員卡號 → 姓名、地址、電話、Email
-
+- `Member` → (CardID, Name, Address, Phone, Email)
 #### 借閱紀錄(Borrowing)
+-  `Borrowing` → (BorrowID, CardID, ISBN, BorrowDate, DueDate, ReturnDate)
 
-- (會員卡號, ISBN, 借閱日期) → 應還日期、實際歸還日期
-
-
-
-## 2.正規化設計
-### 書籍:
-- `Book` (ISBN, Title, Year, Category, PublisherName)
-- `Publisher` (PublisherName, PublisherAddress)
-- `Author` (AuthorID, AuthorName)
-- `BookAuthor` (ISBN, AuthorID)   -- 多對多關係
-### 會員:
-- `Member` (CardID, Name, Address, Phone, Email)
-### 借閱紀錄:
-- `Borrowing` (BorrowID, CardID, ISBN, BorrowDate, DueDate, ReturnDate)
-
-### 正規化過程
+## 2. 正規化過程
 
 #### 1NF:移除重複與集合欄位
 - 將多個作者展開為一筆一筆資料（即一行只對應一位作者）
@@ -65,6 +49,49 @@
 - `出版社名稱` → `出版社地址` → 傳遞依賴
 - 拆出 `Publisher` 表，讓 `Book` 表只記錄出版社名稱
 - 資料應該直接依賴主鍵，不能間接依賴主鍵
-## ER-D圖
+
+## 3.資料表概念
+
+- ### Book
+  | 欄位名稱       | 說明             |
+  |----------------|------------------|
+  | `ISBN`         | 主鍵，書籍代碼   |
+  | `Title`        | 書名             |
+  | `Year`         | 出版年份         |
+  | `Category`     | 書籍類別         |
+  | `PublisherName`| 外鍵，對應出版社 |
+- ### Author
+  | 欄位名稱     | 說明       |
+  |--------------|------------|
+  | `AuthorID`   | 主鍵       |
+  | `AuthorName` | 作者姓名   |
+- ### BookAuthor（多對多關聯表）
+  | 欄位名稱   | 說明                          |
+  |------------|-------------------------------|
+  | `ISBN`     | 外鍵，對應書籍                |
+  | `AuthorID` | 外鍵，對應作者                |
+- ### Publisher
+  | 欄位名稱        | 說明         |
+  |-----------------|--------------|
+  | `PublisherName` | 主鍵         |
+  | `PublisherAddress` | 出版社地址 |
+- ### Member
+  | 欄位名稱   | 說明             |
+  |------------|------------------|
+  | `CardID`   | 主鍵，會員卡號   |
+  | `Name`     | 姓名             |
+  | `Address`  | 地址             |
+  | `Phone`    | 電話             |
+  | `Email`    | 電子郵件         |
+- ### Borrowing
+  | 欄位名稱     | 說明                        |
+  |--------------|-----------------------------|
+  | `BorrowID`   | 主鍵，借閱編號              |
+  | `CardID`     | 外鍵，對應會員              |
+  | `ISBN`       | 外鍵，對應書籍              |
+  | `BorrowDate` | 借閱日期                    |
+  | `DueDate`    | 應還日期                    |
+  | `ReturnDate` | 實際歸還日期（可為 NULL）   |
+## 4. ER圖
 
 ![Lab05_01](https://github.com/Fukulyn/Lab-05/blob/main/Lab05_1/Lab05_01.png)
