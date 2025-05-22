@@ -36,7 +36,7 @@
 - `SupplierContact` 不該依賴 `Product`，而應依賴 `Supplier`，將其獨立為 `Supplier` 表。
 - `Address` 結構正規分拆為：`Street`、`City`、`PostalCode`、`Country`。
 
-## 4.資料表概念
+## 4.正規化資料表設計
 - ### Customer (顧客相關)
   | 欄位名稱     | 說明           |
   |--------------|----------------|
